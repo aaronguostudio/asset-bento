@@ -1,7 +1,7 @@
 # Asset Bento
 
 <p align="center">
-  <img src="assets/brand/asset-bento-logo-mark-v2-premium-friendly.png" alt="Asset Bento logo" width="220" />
+  <img src="assets/brand/asset-bento-readme-banner.png" alt="Asset Bento banner" width="100%" />
 </p>
 
 Agent-first product image assets for real web apps.
