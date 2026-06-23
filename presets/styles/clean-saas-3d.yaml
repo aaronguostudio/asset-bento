@@ -1,0 +1,36 @@
+style:
+  name: clean-saas-3d
+  display_name: Clean SaaS 3D
+  description: Crisp, modern 3D product illustrations for SaaS screens, feature cards, and onboarding surfaces.
+  visual_language:
+    keywords:
+      - clean SaaS
+      - modern 3D
+      - product-ready
+    materials:
+      - smooth plastic
+      - soft ceramic
+      - subtle glass accents
+    lighting:
+      - bright product lighting
+      - controlled shadows
+    composition:
+      - centered focal object
+      - restrained supporting accents
+      - works inside UI cards
+  defaults:
+    background_mode: white
+    complexity_level: balanced
+    main_elements: 1
+    accent_elements: 3
+    allow_ui_mockups: true
+    allow_text: false
+  forbidden:
+    - unreadable mini dashboards
+    - random chart panels
+    - crowded object piles
+  best_for:
+    - feature
+    - onboarding
+    - billing
+    - communication

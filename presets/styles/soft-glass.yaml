@@ -1,0 +1,37 @@
+style:
+  name: soft-glass
+  display_name: Soft Glass
+  description: Translucent, product-ready glass forms with delicate reflections and a clean interface-friendly feel.
+  visual_language:
+    keywords:
+      - soft glass
+      - translucent
+      - polished
+    materials:
+      - frosted glass
+      - glossy polymer
+      - soft chrome accents
+    lighting:
+      - bright white background
+      - gentle reflections
+      - soft shadows
+    composition:
+      - centered
+      - layered but uncluttered
+      - breathing room around the subject
+  defaults:
+    background_mode: white
+    complexity_level: balanced
+    main_elements: 1
+    accent_elements: 3
+    allow_ui_mockups: false
+    allow_text: false
+  forbidden:
+    - harsh neon lighting
+    - dark backgrounds
+    - dense interface panels
+  best_for:
+    - onboarding
+    - feature
+    - loading
+    - empty-state

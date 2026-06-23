@@ -1,0 +1,33 @@
+brand_profile: ./sample-brand-profile.yaml
+asset:
+  name: tn-loading-duo
+  type: loading
+  intent: A calm loading illustration inspired by two companion figures waiting together.
+  usage:
+    - page loading
+  background:
+    mode: white
+  dimensions:
+    aspect_ratio: "1:1"
+    target_sizes:
+      - 256
+      - 512
+  complexity:
+    level: minimal
+    main_elements: 1
+    accent_elements: 2
+    allow_ui_mockups: false
+    allow_text: false
+  direction:
+    main_subject: Two abstract friendly companion figures on a soft pedestal.
+    supporting_accents:
+      - two subtle orbit arcs
+      - two small loading dots
+    mood:
+      - calm
+      - friendly
+  export:
+    formats:
+      - png
+      - webp
+    webp_quality: 82

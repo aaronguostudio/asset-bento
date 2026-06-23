@@ -1,0 +1,7 @@
+interface:
+  display_name: "Asset Bento"
+  short_description: "Guide users from product asset ideas to brand-consistent web-ready image packages."
+  default_prompt: "Use the asset-bento skill to guide a product asset session from brand/style intake to export."
+
+policy:
+  allow_implicit_invocation: true

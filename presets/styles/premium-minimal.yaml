@@ -1,0 +1,35 @@
+style:
+  name: premium-minimal
+  display_name: Premium Minimal
+  description: Restrained SaaS product assets with polished materials, quiet confidence, and generous whitespace.
+  visual_language:
+    keywords:
+      - premium SaaS
+      - minimal
+      - calm
+    materials:
+      - soft ceramic
+      - subtle glass
+    lighting:
+      - studio white light
+      - gentle shadows
+    composition:
+      - centered
+      - single focal object
+      - generous whitespace
+  defaults:
+    background_mode: white
+    complexity_level: minimal
+    main_elements: 1
+    accent_elements: 2
+    allow_ui_mockups: false
+    allow_text: false
+  forbidden:
+    - busy dashboards
+    - floating random icons
+    - readable text
+  best_for:
+    - loading
+    - empty-state
+    - success
+    - feature

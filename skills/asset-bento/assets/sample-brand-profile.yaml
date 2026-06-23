@@ -1,0 +1,18 @@
+brand:
+  name: TinyNest
+  description: Family-friendly scheduling software for small childcare teams.
+  colors:
+    primary: "#10D99A"
+    navy: "#08232B"
+    white: "#FFFFFF"
+  visual_language:
+    keywords:
+      - clean SaaS
+      - family-friendly
+      - soft 3D
+      - product-ready
+  constraints:
+    no_text_in_images: true
+    no_logo_recreation: true
+    no_busy_dashboards_by_default: true
+    prefer_white_background: true

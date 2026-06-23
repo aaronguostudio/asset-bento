@@ -1,0 +1,36 @@
+style:
+  name: playful-mascot-lite
+  display_name: Playful Mascot Lite
+  description: A light mascot-inspired direction that adds warmth while staying polished enough for product UI.
+  visual_language:
+    keywords:
+      - playful
+      - friendly
+      - light mascot
+    materials:
+      - soft 3D
+      - rounded shapes
+      - matte surfaces
+    lighting:
+      - warm clean lighting
+      - gentle shadows
+    composition:
+      - one character-like form
+      - expressive but simple
+      - small supporting accents
+  defaults:
+    background_mode: white
+    complexity_level: balanced
+    main_elements: 1
+    accent_elements: 3
+    allow_ui_mockups: false
+    allow_text: false
+  forbidden:
+    - cartoon scene clutter
+    - exaggerated facial features
+    - brand logo recreation
+  best_for:
+    - loading
+    - success
+    - empty-state
+    - onboarding

@@ -1,0 +1,16 @@
+node_modules/
+/dist/
+.env
+/outputs/
+/dist-assets/
+tmp/
+.DS_Store
+/docs/superpowers/
+/brands/
+/briefs/
+profiles/brand/*.yaml
+profiles/style/*.yaml
+sessions/*.yaml
+!profiles/brand/.gitkeep
+!profiles/style/.gitkeep
+!sessions/.gitkeep

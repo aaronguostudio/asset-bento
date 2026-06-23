@@ -1,0 +1,34 @@
+style:
+  name: flat-product-icon
+  display_name: Flat Product Icon
+  description: Simple flat vector-like product icons optimized for small UI sizes and immediate recognition.
+  visual_language:
+    keywords:
+      - flat icon
+      - simple
+      - crisp
+    materials:
+      - solid fills
+      - clean strokes
+    lighting:
+      - no realistic lighting
+      - high legibility
+    composition:
+      - centered icon
+      - strong silhouette
+      - minimal accents
+  defaults:
+    background_mode: native-transparent
+    complexity_level: minimal
+    main_elements: 1
+    accent_elements: 1
+    allow_ui_mockups: false
+    allow_text: false
+  forbidden:
+    - tiny details
+    - gradients that hurt small-size legibility
+    - text
+  best_for:
+    - team-icon
+    - avatar-placeholder
+    - custom

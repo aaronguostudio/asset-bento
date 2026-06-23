@@ -1,0 +1,36 @@
+style:
+  name: friendly-clay
+  display_name: Friendly Clay
+  description: Warm clay-like 3D shapes with approachable product personality and simple readable silhouettes.
+  visual_language:
+    keywords:
+      - friendly
+      - soft 3D
+      - approachable
+    materials:
+      - matte clay
+      - soft rubber
+      - rounded ceramic
+    lighting:
+      - warm studio light
+      - soft shadows
+    composition:
+      - simple character-like subject
+      - few accents
+      - clear silhouette
+  defaults:
+    background_mode: white
+    complexity_level: minimal
+    main_elements: 1
+    accent_elements: 2
+    allow_ui_mockups: false
+    allow_text: false
+  forbidden:
+    - childish clutter
+    - excessive props
+    - readable text
+  best_for:
+    - empty-state
+    - loading
+    - success
+    - onboarding
