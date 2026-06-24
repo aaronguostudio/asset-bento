@@ -10,9 +10,44 @@ Asset Bento helps Codex and Claude Code turn product design intent into brand-co
 
 It is not just a prompt library. It is a guided workflow for common product UI assets: loading states, empty states, success states, onboarding visuals, feature-card art, and small product icons.
 
-See [release notes](RELEASE_NOTES.md) for what shipped in the latest version.
+## Install In Codex
 
-## Agent-First Demo
+Asset Bento ships as a Codex plugin with its canonical skill at `skills/asset-bento/SKILL.md`.
+
+For local development from this repository, add the repo marketplace and then install Asset Bento from the Codex plugin picker:
+
+```bash
+codex plugin marketplace add ./.
+```
+
+Then open Codex, go to Plugins, choose the `Asset Bento Local` marketplace, and install `Asset Bento`.
+
+For Codex CLI, you can also open the plugin picker with:
+
+```bash
+codex
+/plugins
+```
+
+## Install In Claude Code
+
+Asset Bento also ships as a Claude Code plugin through `.claude-plugin/plugin.json`.
+
+For local development from this repository, launch Claude Code with the plugin directory:
+
+```bash
+claude --plugin-dir .
+```
+
+After Claude Code starts, invoke the namespaced skill or ask naturally for a product asset:
+
+```text
+/asset-bento:asset-bento Help me make a premium but friendly loading asset for TinyNest.
+```
+
+Claude Code may also auto-select the skill when your request clearly asks for product visuals.
+
+## Try It
 
 Ask your agent:
 
@@ -29,17 +64,22 @@ The Asset Bento skill guides the session:
 5. Generate variations through the CLI.
 6. Help review, export, package, and optionally create a loading animation wrapper.
 
-## Install
+Set `OPENAI_API_KEY` before running real image generation. Tests never call the OpenAI API.
+
+## Use The CLI
+
+The plugin workflow is the friendly path. The CLI is the execution layer for agents and advanced users.
+
+Install dependencies and configure local environment values:
 
 ```bash
 npm install
 cp .env.example .env
 ```
 
-Set `OPENAI_API_KEY` in `.env` before running real image generation. Tests never call the OpenAI API.
 The CLI automatically loads `.env` from the current working directory without overriding shell environment variables.
 
-## Quick Start With The CLI
+Create and validate a sample brief:
 
 ```bash
 npm run dev -- init-brand --name "TinyNest" --out ./examples/tinynest-style/brand-profile.yaml
@@ -47,7 +87,7 @@ npm run dev -- brief --brand ./examples/tinynest-style/brand-profile.yaml --type
 npm run dev -- validate --brand ./examples/tinynest-style/brand-profile.yaml --brief ./examples/tinynest-style/briefs/loading-duo.yaml
 ```
 
-Generate with OpenAI when your API key is configured in `.env`:
+Generate with OpenAI when your API key is configured:
 
 ```bash
 npm run dev -- generate --brief ./examples/tinynest-style/briefs/loading-duo.yaml --variations 4 --out ./outputs/tn-loading-duo
@@ -82,16 +122,19 @@ Asset Bento defaults to restrained product assets: one main visual idea, one or 
 
 Transparency is supported as a brief mode, but the MVP treats white backgrounds as the default. Native transparency is sent to providers only when supported, and white-to-alpha should be considered experimental for glassy or shadow-heavy assets.
 
-## Agent Skills
+## Plugin Layout
 
 The canonical skill lives at `skills/asset-bento/SKILL.md`.
 
-Repo-scoped adapters are included for:
+Plugin and adapter files:
 
-- Codex: `.agents/skills/asset-bento/SKILL.md`
-- Claude Code: `.claude/skills/asset-bento/SKILL.md`
+- Codex plugin manifest: `.codex-plugin/plugin.json`
+- Codex local marketplace: `.agents/plugins/marketplace.json`
+- Claude Code plugin manifest: `.claude-plugin/plugin.json`
+- Codex repo-scoped adapter: `.agents/skills/asset-bento/SKILL.md`
+- Claude Code repo-scoped adapter: `.claude/skills/asset-bento/SKILL.md`
 
-Both adapters point agents back to the canonical skill so the workflow remains agent-neutral.
+Both plugin manifests point back to the canonical skill so the workflow remains agent-neutral.
 
 Reusable profile folders:
 
@@ -100,7 +143,7 @@ Reusable profile folders:
 - Built-in style presets: `presets/styles/`
 - Guided session records: `sessions/`
 
-In Codex or Claude Code, open this repository and ask for a product image asset in natural language. The agent should read the repo-scoped skill adapter and guide the workflow.
+See [plugin docs](docs/plugins.md) for local plugin validation details.
 
 ## Development
 
@@ -110,4 +153,4 @@ npm run lint
 npm run build
 ```
 
-No secrets or proprietary brand assets should be committed.
+No secrets, generated outputs, or proprietary brand assets should be committed.
