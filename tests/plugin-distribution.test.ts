@@ -102,6 +102,7 @@ describe("Codex plugin distribution", () => {
     await expectPathExists(manifest.interface.composerIcon);
     await expectPathExists(manifest.interface.logo);
     expect(pkg.files).toEqual(expect.arrayContaining([".codex-plugin"]));
+    expect(pkg.files).toEqual(expect.arrayContaining(["assets"]));
   });
 
   it("exposes Asset Bento through a repo-scoped Codex marketplace", async () => {

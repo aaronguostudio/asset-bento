@@ -29,6 +29,8 @@
   "files": [
     "dist",
     "skills",
+    "assets",
+    ".codex-plugin",
     ".agents",
     ".claude",
     "README.md",

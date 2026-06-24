@@ -1,0 +1,45 @@
+{
+  "name": "asset-bento",
+  "version": "0.1.0",
+  "description": "Generate brand-consistent, production-ready image asset packages for websites and apps.",
+  "author": {
+    "name": "Aaron Guo Studio",
+    "url": "https://github.com/aaronguostudio"
+  },
+  "homepage": "https://github.com/aaronguostudio/asset-bento#readme",
+  "repository": "https://github.com/aaronguostudio/asset-bento",
+  "license": "MIT",
+  "keywords": [
+    "ai-agents",
+    "codex",
+    "claude-code",
+    "image-generation",
+    "design-tools",
+    "product-assets",
+    "openai"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Asset Bento",
+    "shortDescription": "Guide product asset ideas into brand-consistent web-ready image packages.",
+    "longDescription": "Use Asset Bento to turn product design intent into reusable brand and style profiles, structured asset briefs, generated originals, PNG/WebP exports, metadata, alt text, and optional loading animation wrappers.",
+    "developerName": "Aaron Guo Studio",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Help me make a premium but friendly loading asset for TinyNest.",
+      "Create a brand-consistent empty state illustration for my SaaS app."
+    ],
+    "websiteURL": "https://github.com/aaronguostudio/asset-bento",
+    "privacyPolicyURL": "https://github.com/aaronguostudio/asset-bento/blob/main/SECURITY.md",
+    "termsOfServiceURL": "https://github.com/aaronguostudio/asset-bento/blob/main/LICENSE",
+    "brandColor": "#E86F2A",
+    "composerIcon": "./assets/brand/asset-bento-logo-mark-v2-premium-friendly.png",
+    "logo": "./assets/brand/asset-bento-readme-banner.png",
+    "screenshots": []
+  }
+}
