@@ -77,6 +77,20 @@ type CodexMarketplace = {
   }>;
 };
 
+type ClaudePluginManifest = {
+  name: string;
+  description: string;
+  version: string;
+  author: {
+    name: string;
+    url: string;
+  };
+  homepage: string;
+  repository: string;
+  license: string;
+  keywords: string[];
+};
+
 describe("Codex plugin distribution", () => {
   it("defines a Codex plugin manifest that points at the canonical skill", async () => {
     const pkg = await readJson<PackageJson>("package.json");
@@ -123,5 +137,24 @@ describe("Codex plugin distribution", () => {
       },
       category: "Coding"
     });
+  });
+});
+
+describe("Claude Code plugin distribution", () => {
+  it("defines a Claude Code plugin manifest for the canonical skill", async () => {
+    const pkg = await readJson<PackageJson>("package.json");
+    const manifest = await readJson<ClaudePluginManifest>(".claude-plugin/plugin.json");
+
+    expect(manifest.name).toBe(pkg.name);
+    expect(manifest.version).toBe(pkg.version);
+    expect(manifest.description).toBe(pkg.description);
+    expect(manifest.license).toBe(pkg.license);
+    expect(manifest.homepage).toBe(pkg.homepage);
+    expect(manifest.repository).toBe("https://github.com/aaronguostudio/asset-bento");
+    expect(manifest.keywords).toEqual(pkg.keywords);
+    expect(manifest.author.name).toBe("Aaron Guo Studio");
+
+    await expectPathExists("skills/asset-bento/SKILL.md");
+    expect(pkg.files).toEqual(expect.arrayContaining([".claude-plugin"]));
   });
 });
