@@ -158,3 +158,32 @@ describe("Claude Code plugin distribution", () => {
     expect(pkg.files).toEqual(expect.arrayContaining([".claude-plugin"]));
   });
 });
+
+describe("plugin installation documentation", () => {
+  it("puts plugin installation before CLI development setup in the README", async () => {
+    const readme = await readFile(path.join(root, "README.md"), "utf8");
+
+    const codexInstall = readme.indexOf("## Install In Codex");
+    const claudeInstall = readme.indexOf("## Install In Claude Code");
+    const cliUsage = readme.indexOf("## Use The CLI");
+    const development = readme.indexOf("## Development");
+
+    expect(codexInstall).toBeGreaterThan(-1);
+    expect(claudeInstall).toBeGreaterThan(codexInstall);
+    expect(cliUsage).toBeGreaterThan(claudeInstall);
+    expect(development).toBeGreaterThan(cliUsage);
+    expect(readme).toContain("codex plugin marketplace add");
+    expect(readme).toContain("claude --plugin-dir");
+    expect(readme).toContain("Help me make a premium but friendly loading asset for TinyNest.");
+  });
+
+  it("documents the plugin layout and local validation commands", async () => {
+    const docs = await readFile(path.join(root, "docs/plugins.md"), "utf8");
+
+    expect(docs).toContain(".codex-plugin/plugin.json");
+    expect(docs).toContain(".claude-plugin/plugin.json");
+    expect(docs).toContain(".agents/plugins/marketplace.json");
+    expect(docs).toContain("claude --plugin-dir .");
+    expect(docs).toContain("npm test -- tests/plugin-distribution.test.ts");
+  });
+});
