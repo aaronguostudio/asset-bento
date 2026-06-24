@@ -1,0 +1,21 @@
+{
+  "name": "asset-bento",
+  "description": "Generate brand-consistent, production-ready image asset packages for websites and apps.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aaron Guo Studio",
+    "url": "https://github.com/aaronguostudio"
+  },
+  "homepage": "https://github.com/aaronguostudio/asset-bento#readme",
+  "repository": "https://github.com/aaronguostudio/asset-bento",
+  "license": "MIT",
+  "keywords": [
+    "ai-agents",
+    "codex",
+    "claude-code",
+    "image-generation",
+    "design-tools",
+    "product-assets",
+    "openai"
+  ]
+}

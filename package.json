@@ -31,6 +31,7 @@
     "skills",
     "assets",
     ".codex-plugin",
+    ".claude-plugin",
     ".agents",
     ".claude",
     "README.md",
