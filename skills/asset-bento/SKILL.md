@@ -79,6 +79,7 @@ Existing `brands/` files remain valid. Do not move user files unless asked.
 
 Use the local CLI when available:
 
+- `abento doctor`
 - `abento init-brand`
 - `abento brief`
 - `abento generate`

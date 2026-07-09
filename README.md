@@ -79,6 +79,12 @@ cp .env.example .env
 
 The CLI automatically loads `.env` from the current working directory without overriding shell environment variables.
 
+Check the local setup and get safe next steps:
+
+```bash
+npm run dev -- doctor
+```
+
 Create and validate a sample brief:
 
 ```bash

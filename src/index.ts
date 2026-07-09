@@ -11,4 +11,5 @@ export * from "./core/exporter.js";
 export * from "./core/animation.js";
 export * from "./core/image-provider.js";
 export * from "./core/openai-image-provider.js";
+export * from "./commands/doctor.js";
 export * from "./utils/env.js";

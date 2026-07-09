@@ -2,6 +2,7 @@
 import { Command } from "commander";
 import { registerAnimateCommand } from "./commands/animate.js";
 import { registerBriefCommand } from "./commands/brief.js";
+import { registerDoctorCommand } from "./commands/doctor.js";
 import { registerExportCommand } from "./commands/export.js";
 import { registerGenerateCommand } from "./commands/generate.js";
 import { registerInitBrandCommand } from "./commands/init-brand.js";
@@ -16,6 +17,7 @@ const program = new Command();
 program.name("abento").description("Generate brand-consistent product image asset packages.").version("0.1.0");
 
 registerInitBrandCommand(program);
+registerDoctorCommand(program);
 registerBriefCommand(program);
 registerGenerateCommand(program);
 registerExportCommand(program);

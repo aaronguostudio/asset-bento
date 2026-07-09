@@ -8,6 +8,7 @@ Asset Bento is now available as an open-source agent-first workflow for creating
 
 - Added the `asset-bento` skill workflow for guiding product asset sessions from natural-language intent to reusable briefs and generated outputs.
 - Added the `abento` CLI with commands for brand setup, brief creation, validation, generation, export, packaging, and loading animation wrappers.
+- Added `abento doctor` for checking local setup, quickstart examples, style presets, and API key readiness.
 - Added reusable brand, style, and session profile conventions for repeatable visual systems.
 - Added built-in style presets including `premium-minimal`, `soft-glass`, `friendly-clay`, `clean-saas-3d`, `flat-product-icon`, and `playful-mascot-lite`.
 - Added repo-scoped adapters for Codex and Claude Code while keeping `skills/asset-bento/SKILL.md` as the canonical workflow.

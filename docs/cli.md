@@ -5,6 +5,7 @@ Use `npm run dev -- <command>` during development and `abento <command>` after b
 Commands:
 
 - `init-brand`
+- `doctor`
 - `brief`
 - `validate`
 - `generate`
@@ -15,9 +16,12 @@ Commands:
 Useful generation checks:
 
 ```bash
+abento doctor
 abento generate --brief ./examples/tinynest-style/briefs/loading-duo.yaml --dry-run
 abento generate --brief ./examples/tinynest-style/briefs/loading-duo.yaml --style ./presets/styles/premium-minimal.yaml --dry-run
 ```
+
+Use `doctor` after installing to check Node.js, built-in quickstart assets, style presets, and whether `OPENAI_API_KEY` is set. Missing `OPENAI_API_KEY` is a warning by default because `--dry-run` works without calling an image provider.
 
 Use `--dry-run` to resolve brand/style references and inspect the final prompt without calling an image provider.
 
