@@ -1,4 +1,5 @@
 brand_profile: ../brand-profile.yaml
+style_profile: ../../../presets/styles/premium-minimal.yaml
 asset:
   name: tn-loading-duo
   type: loading

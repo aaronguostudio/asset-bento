@@ -69,6 +69,7 @@ Before shipping a plugin distribution change, also run:
 npm test
 npm run lint
 npm run build
+npm run pack:check
 ```
 
 Tests must not call external image APIs. Use mock providers or fixture images for any generation behavior.

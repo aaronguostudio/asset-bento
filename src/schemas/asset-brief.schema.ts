@@ -21,6 +21,7 @@ export const ExportFormatSchema = z.enum(["png", "webp", "jpeg"]);
 
 export const AssetBriefSchema = z.object({
   brand_profile: z.string().optional(),
+  style_profile: z.string().optional(),
   asset: z.object({
     name: z.string().min(1),
     type: AssetTypeSchema,

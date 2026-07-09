@@ -1,8 +1,12 @@
+import { execFile } from "node:child_process";
+import { tmpdir } from "node:os";
 import { access, readFile } from "node:fs/promises";
 import path from "node:path";
+import { promisify } from "node:util";
 import { describe, expect, it } from "vitest";
 
 const root = process.cwd();
+const execFileAsync = promisify(execFile);
 
 async function readJson<T>(relativePath: string): Promise<T> {
   const file = await readFile(path.join(root, relativePath), "utf8");
@@ -90,6 +94,12 @@ type ClaudePluginManifest = {
   license: string;
   keywords: string[];
 };
+
+type NpmPackDryRun = Array<{
+  files: Array<{
+    path: string;
+  }>;
+}>;
 
 describe("Codex plugin distribution", () => {
   it("defines a Codex plugin manifest that points at the canonical skill", async () => {
@@ -185,5 +195,42 @@ describe("plugin installation documentation", () => {
     expect(docs).toContain(".agents/plugins/marketplace.json");
     expect(docs).toContain("claude --plugin-dir .");
     expect(docs).toContain("npm test -- tests/plugin-distribution.test.ts");
+    expect(docs).toContain("npm run pack:check");
+  });
+});
+
+describe("npm package contents", () => {
+  it("ships the runtime resources referenced by the installed skill", async () => {
+    const { stdout } = await execFileAsync("npm", ["pack", "--dry-run", "--json", "--ignore-scripts"], {
+      cwd: root,
+      env: {
+        ...process.env,
+        npm_config_cache: path.join(tmpdir(), "asset-bento-npm-cache")
+      }
+    });
+    const [pack] = JSON.parse(stdout) as NpmPackDryRun;
+    const files = pack.files.map((file) => file.path);
+
+    expect(files).toEqual(
+      expect.arrayContaining([
+        "presets/styles/premium-minimal.yaml",
+        "presets/styles/soft-glass.yaml",
+        "presets/styles/friendly-clay.yaml",
+        "presets/styles/clean-saas-3d.yaml",
+        "presets/styles/flat-product-icon.yaml",
+        "presets/styles/playful-mascot-lite.yaml",
+        "docs/asset-brief.md",
+        "docs/style-profiles.md",
+        "docs/guided-sessions.md",
+        "docs/transparency.md",
+        "docs/animation.md",
+        "docs/plugins.md",
+        "examples/tinynest-style/brand-profile.yaml",
+        "examples/tinynest-style/briefs/loading-duo.yaml",
+        "RELEASE_NOTES.md",
+        "CONTRIBUTING.md",
+        "SECURITY.md"
+      ])
+    );
   });
 });

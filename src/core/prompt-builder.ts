@@ -6,6 +6,10 @@ function sentenceList(values: string[]) {
   return values.filter(Boolean).join(", ");
 }
 
+function sentenceText(value: string) {
+  return value.trim().replace(/[.!?]+$/, "");
+}
+
 function assetTypeLabel(type: string) {
   return type === "empty-state" ? "empty state" : type.replace(/-/g, " ");
 }
@@ -18,11 +22,11 @@ export function buildPrompt(brandProfile: BrandProfile, brief: AssetBrief, style
   const colorValues = Object.values(brand.colors);
   const usage = sentenceList(asset.usage);
   const accents = asset.direction.supporting_accents.slice(0, complexity.accent_elements);
+  const brandDescription = brand.description ? sentenceText(brand.description) : "a software product";
+  const mainSubject = sentenceText(asset.direction.main_subject);
   const prompt: string[] = [];
 
-  prompt.push(
-    `Create a standalone product image asset for ${brand.name}, ${brand.description || "a software product"}.`
-  );
+  prompt.push(`Create a standalone product image asset for ${brand.name}, ${brandDescription}.`);
   prompt.push(`The asset represents a ${assetTypeLabel(asset.type)} state.`);
 
   if (usage) {
@@ -69,7 +73,7 @@ export function buildPrompt(brandProfile: BrandProfile, brief: AssetBrief, style
   }
 
   prompt.push(
-    `Use one main subject only: ${asset.direction.main_subject}. Keep the composition ${complexity.level}, with ${complexity.main_elements} main element${complexity.main_elements === 1 ? "" : "s"}.`
+    `Use one main subject only: ${mainSubject}. Keep the composition ${complexity.level}, with ${complexity.main_elements} main element${complexity.main_elements === 1 ? "" : "s"}.`
   );
 
   if (accents.length) {

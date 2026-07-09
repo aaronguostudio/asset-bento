@@ -30,11 +30,18 @@
     "dist",
     "skills",
     "assets",
+    "presets",
+    "docs/*.md",
+    "examples/tinynest-style/brand-profile.yaml",
+    "examples/tinynest-style/briefs/*.yaml",
     ".codex-plugin",
     ".claude-plugin",
     ".agents",
     ".claude",
     "README.md",
+    "RELEASE_NOTES.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
     "LICENSE"
   ],
   "scripts": {
@@ -43,6 +50,7 @@
     "test": "vitest run",
     "lint": "tsc --noEmit",
     "format": "prettier --write .",
+    "pack:check": "node scripts/pack-check.mjs",
     "prepack": "npm run build"
   },
   "engines": {

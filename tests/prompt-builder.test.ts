@@ -6,7 +6,9 @@ describe("buildPrompt", () => {
   it("turns brand and brief data into a constrained product asset prompt", () => {
     const prompt = buildPrompt(sampleBrand, sampleBrief);
 
-    expect(prompt).toContain("Create a standalone product image asset for TinyNest");
+    expect(prompt).toContain(
+      "Create a standalone product image asset for TinyNest",
+    );
     expect(prompt).toContain("loading state");
     expect(prompt).toContain("Use one main subject only");
     expect(prompt).toContain("Do not include text");
@@ -22,12 +24,40 @@ describe("buildPrompt", () => {
         complexity: {
           ...sampleBrief.asset.complexity,
           allow_text: true,
-          allow_ui_mockups: true
-        }
-      }
+          allow_ui_mockups: true,
+        },
+      },
     });
 
-    expect(prompt).toContain("Readable text is allowed only if it directly serves the asset brief");
+    expect(prompt).toContain(
+      "Readable text is allowed only if it directly serves the asset brief",
+    );
     expect(prompt).toContain("Simple UI mockups are allowed");
+  });
+
+  it("does not duplicate sentence punctuation from profile and brief text", () => {
+    const prompt = buildPrompt(
+      {
+        ...sampleBrand,
+        brand: {
+          ...sampleBrand.brand,
+          description: "A polished product.",
+        },
+      },
+      {
+        ...sampleBrief,
+        asset: {
+          ...sampleBrief.asset,
+          direction: {
+            ...sampleBrief.asset.direction,
+            main_subject: "A single polished object.",
+          },
+        },
+      },
+    );
+
+    expect(prompt).not.toContain("..");
+    expect(prompt).toContain("A polished product.");
+    expect(prompt).toContain("A single polished object.");
   });
 });

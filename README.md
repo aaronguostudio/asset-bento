@@ -87,9 +87,10 @@ npm run dev -- brief --brand ./examples/tinynest-style/brand-profile.yaml --type
 npm run dev -- validate --brand ./examples/tinynest-style/brand-profile.yaml --brief ./examples/tinynest-style/briefs/loading-duo.yaml
 ```
 
-Generate with OpenAI when your API key is configured:
+Preview the resolved prompt, then generate with OpenAI when your API key is configured:
 
 ```bash
+npm run dev -- generate --brief ./examples/tinynest-style/briefs/loading-duo.yaml --dry-run
 npm run dev -- generate --brief ./examples/tinynest-style/briefs/loading-duo.yaml --variations 4 --out ./outputs/tn-loading-duo
 ```
 
@@ -151,6 +152,7 @@ See [plugin docs](docs/plugins.md) for local plugin validation details.
 npm test
 npm run lint
 npm run build
+npm run pack:check
 ```
 
 No secrets, generated outputs, or proprietary brand assets should be committed.
