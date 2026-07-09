@@ -3,7 +3,8 @@ import { access } from "node:fs/promises";
 import path from "node:path";
 import { AssetBriefSchema, ExportFormatSchema, type ExportFormat } from "../schemas/asset-brief.schema.js";
 import { exportImage } from "../core/exporter.js";
-import { loadDataFile } from "../utils/fs.js";
+import { ManifestSchema } from "../schemas/manifest.schema.js";
+import { loadDataFile, writeJsonFile } from "../utils/fs.js";
 
 const defaultSizes = [128, 256, 512, 1024];
 const defaultFormats: ExportFormat[] = ["png", "webp"];
@@ -67,11 +68,34 @@ export async function createExportPlan(options: ExportPlanOptions) {
   return {
     input,
     out,
+    assetManifestPath: options.asset ? path.join(options.asset, "manifest.json") : undefined,
     basename: options.basename ?? brief?.asset.name ?? path.basename(input, path.extname(input)),
     sizes: options.sizes ? parseCsvNumbers(options.sizes) : brief?.asset.dimensions.target_sizes ?? defaultSizes,
     formats: options.formats ? parseFormats(options.formats) : brief?.asset.export.formats ?? defaultFormats,
     webpQuality: options.webpQuality ? Number.parseInt(options.webpQuality, 10) : brief?.asset.export.webp_quality ?? 82
   };
+}
+
+type ExportPlan = Awaited<ReturnType<typeof createExportPlan>>;
+type ExportManifest = Awaited<ReturnType<typeof exportImage>>;
+
+async function updateAssetManifestExports(plan: ExportPlan, exports: ExportManifest["exports"]) {
+  if (!plan.assetManifestPath || !(await pathExists(plan.assetManifestPath))) {
+    return;
+  }
+
+  const manifest = await loadDataFile(plan.assetManifestPath, ManifestSchema);
+  await writeJsonFile(plan.assetManifestPath, {
+    ...manifest,
+    exports
+  });
+}
+
+export async function exportAsset(options: ExportPlanOptions) {
+  const plan = await createExportPlan(options);
+  const manifest = await exportImage(plan);
+  await updateAssetManifestExports(plan, manifest.exports);
+  return { plan, manifest };
 }
 
 export function registerExportCommand(program: Command) {
@@ -87,8 +111,7 @@ export function registerExportCommand(program: Command) {
     .option("--out <path>", "Output directory")
     .option("--basename <name>", "Asset basename")
     .action(async (options: ExportPlanOptions) => {
-      const plan = await createExportPlan(options);
-      await exportImage(plan);
-      console.log(`Exported ${plan.out}`);
+      const result = await exportAsset(options);
+      console.log(`Exported ${result.plan.out}`);
     });
 }
