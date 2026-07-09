@@ -97,7 +97,7 @@ npm run dev -- generate --brief ./examples/tinynest-style/briefs/loading-duo.yam
 Export and package:
 
 ```bash
-npm run dev -- export --input ./outputs/tn-loading-duo/001/original.png --sizes 128,256,512,1024 --formats png,webp --webp-quality 82 --out ./outputs/tn-loading-duo/001/export --basename tn-loading-duo
+npm run dev -- export --asset ./outputs/tn-loading-duo/001
 npm run dev -- package --asset ./outputs/tn-loading-duo/001 --out ./dist/tn-loading-duo
 npm run dev -- animate --input ./outputs/tn-loading-duo/001/original.png --type orbit --name tn-loading-duo --out ./dist/tn-loading-duo/animation
 ```
